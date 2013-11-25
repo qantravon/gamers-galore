@@ -1,0 +1,12 @@
+<ROOT>
+	<GAME>
+		<IMAGE>101</IMAGE>
+		<TIME>180</TIME>
+		<NAME> a </NAME>
+	</GAME>
+	<GAME>
+		<IMAGE>201</IMAGE>
+		<TIME>190</TIME>
+		<NAME> b </NAME>
+	</GAME>
+</ROOT>

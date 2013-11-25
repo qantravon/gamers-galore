@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>User ID</title>
+	</head>
+	<body>
+		<p> {{username}} </p>
+	</body>
+</html>
+
+<!--
+{% autoescape true %}
+<html>
+  <body>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author.nickname() }}</b> wrote:
+      {% else %}
+       An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+
+    <hr>
+
+    <form>Guestbook name:
+      <input value="{{ guestbook_name }}" name="guestbook_name">
+      <input type="submit" value="switch">
+    </form>
+
+    <a href="{{ url|safe }}">{{ url_linktext }}</a>
+
+  </body>
+</html>
+{% endautoescape %}
+-->
+
+<!--		
+<h1 align="center" >Page2</h1>
+<form action="" method="post"
+accept-charset=:"utf-8" >
+
+<script>
+	window.onload=function readxml() {
+	var xmlhttp;
+		if (window.XMLHttpRequest)
+		{
+		   xmlhttp = new XMLHttpRequest();
+		   document.write("test0");
+	   }
+	   else {// code for IE6, IE5
+		   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+		   document.write("test1");
+	   }
+	   document.write("test2");
+	 	
+	   xmlhttp.open("GET","Test.xml", false); 
+	   xmlhttp.send();
+	   
+	   var xmlDoc = xmlhttp.responseXML;
+	   document.write(xmlDoc);
+	   x=xmlDoc.getElementsByTagName("GAME");
+	   document.write(x.length);
+		document.write("test4");
+	   for (i = 0; i < x.length; i++) 
+	   {
+		   
+		  var name = x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue;
+		  document.write(name);
+		  //var game = x[i].getElementsByTagName("GAME")[0].childNodes[0].nodeValue;
+		  var time = x[i].getElementsByTagName("TIME")[0].childNodes[0].nodeValue;
+		  document.write(time);
+		  var image = x[i].getElementsByTagName("IMAGE")[0].childNodes[0].nodeValue;
+		
+       }       
+	   //document.write(name);
+	}
+</script>
+<script>
+	/*	
+		window.onload=function add_new_data() {
+ 		//先取得目前的row數
+		readxml();
+		x = [1,2,3];
+		y = [150,30,60];
+		k = 2;
+			 for (i=k; i>=0; i--){
+			 	var num = document.getElementById("mytable").rows.length;
+			 //建立新的tr 因為是從0開始算 所以目前的row數剛好為目前要增加的第幾個tr
+			 	var Tr = document.getElementById("mytable").insertRow(num);
+			 //建立新的td 而Tr.cells.length就是這個tr目前的td數
+			 	Td = Tr.insertCell(Tr.cells.length);
+			 //而這個就是要填入td中的innerHTML
+			 	Td.innerHTML=x[i];
+			 //這裡也可以用不同的變數來辨別不同的td (我是用同一個比較省事XD)
+			 	Td = Tr.insertCell(Tr.cells.length);
+			 	Td.innerHTML=y[i]+" min";
+			 //這樣就好囉 記得td數目要一樣 不然會亂掉~
+			}
+		}
+		*/
+</script>
+
+
+<body>
+	<table id="mytable" width="580">
+      <tr>
+        <td width="150" class="td01">Games</td>
+        <td width="200" class="td01">Play Time</td>
+        <td width="250" class="td01"><input type="button" value="find commen games"></input></td>
+      </tr>
+      
+    </table>
+    
+</body>
+</form>
+</html>
+//-->
