@@ -3,9 +3,6 @@ import requests
 import os
 
 giantBombWAPI = 'http://www.giantbomb.com/api/'
-#giantBombKEY = '5fff24a08c7bc8a3c37e59a96c6935fc5e62bba7'
-#giantBombKEY = 'dbbe26cecd9b99742d654786ec59a7f998ee7f4a'	#travis
-giantBombKEY = '10193a128115a1b3136cd8b2a840ad34f563e361'	#collin
 
 def grabImage(id):
 	_gameImages = requests.get(giantBombWAPI+'game/%s/?api_key=%s&field_list=image&format=xml' % (id, giantBombKEY))

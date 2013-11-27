@@ -1,3 +1,6 @@
+# This script was ran in order to eliminate games from the database
+# that did not have a description or genre listed
+
 import xml.etree.ElementTree as ET
 import os
 

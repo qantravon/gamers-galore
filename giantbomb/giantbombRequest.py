@@ -9,16 +9,10 @@ from xml.dom.minidom import parseString
 
 
 steamWAPI = 'http://api.steampowered.com/'
-steamKEY = 'B1B2EF4AFBA86C6A4DB4DCF4A282BBFB'
 
 giantBombWAPI = 'http://www.giantbomb.com/api/'
-giantBombKEY = '5fff24a08c7bc8a3c37e59a96c6935fc5e62bba7'	#shane
-#giantBombKEY = 'dbbe26cecd9b99742d654786ec59a7f998ee7f4a'	#travis
-#giantBombKEY = '10193a128115a1b3136cd8b2a840ad34f563e361'	#collin
 
 gamesRadarWAPI = 'http://api.gamesradar.com/'
-gamesRadarKEY = '99dc8b6da26148ad9f7cdb3279892821'
-gamesRadarSECRET = 'c40848f811bd4f0c'
 
 #http://steamcommunity.com/profiles/76561197979836184
 

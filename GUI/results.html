@@ -4,7 +4,11 @@
 		<title>User ID</title>
 	</head>
 	<body>
-		<p> {{username}} </p>
+		<p> {{username}} 
+		{% for num in id %}
+			{{num}}
+		{% endfor %}
+		</p>
 	</body>
 </html>
 

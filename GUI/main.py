@@ -61,8 +61,8 @@ class MainPage(webapp2.RequestHandler):
     	#self.response.out.write('Hollow ' + username)
 		results = {
 			'username': username,
-			'id': 333444555,
-			'desc': 'hello there my name is shane'
+			'id': [33,34,44,555]
+			#'desc': "hello there my name is shane"
 			}
 		
 		
