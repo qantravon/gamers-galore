@@ -3,6 +3,9 @@ import requests
 import os
 
 giantBombWAPI = 'http://www.giantbomb.com/api/'
+#giantBombKEY = ''
+#giantBombKEY = ''
+giantBombKEY = ''
 
 def grabImage(id):
 	_gameImages = requests.get(giantBombWAPI+'game/%s/?api_key=%s&field_list=image&format=xml' % (id, giantBombKEY))

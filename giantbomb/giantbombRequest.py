@@ -9,10 +9,16 @@ from xml.dom.minidom import parseString
 
 
 steamWAPI = 'http://api.steampowered.com/'
+steamKEY = ''
 
 giantBombWAPI = 'http://www.giantbomb.com/api/'
+giantBombKEY = ''
+#giantBombKEY = ''
+#giantBombKEY = ''
 
 gamesRadarWAPI = 'http://api.gamesradar.com/'
+gamesRadarKEY = ''
+gamesRadarSECRET = ''
 
 #http://steamcommunity.com/profiles/76561197979836184
 
