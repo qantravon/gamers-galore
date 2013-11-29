@@ -23,55 +23,43 @@ from google.appengine.api import images
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
-	loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
-	extensions=['jinja2.ext.autoescape'],
-	autoescape=True)
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
 
+class MainHandler(webapp2.RequestHandler):
+    
 
-#class MainHandler(webapp2.RequestHandler):
-    #def get(self):
-        #self.response.write(template.render('main.html', {}))
-class MainPage(webapp2.RequestHandler):
-    #def get(self):
-        #guestbook_name = self.request.get('guestbook_name',DEFAULT_GUESTBOOK_NAME)
-        #greetings_query = Greeting.query(ancestor=guestbook_key(guestbook_name)).order(-Greeting.date)
-        #greetings = greetings_query.fetch(10)
+    def get(self):
 
-        #if users.get_current_user():
-            #url = users.create_logout_url(self.request.uri)
-            #url_linktext = 'Logout'
-        #else:
-            #url = users.create_login_url(self.request.uri)
-            #url_linktext = 'Login'
+        self.response.write(template.render('main.html', {}))
+        
+    def post(self):
+        username = self.request.get('user_name')
+    	results = {
+            'simgames':["e","f","g","h"],
+            'username': username,
+            'games':[("1",33,"http://static.giantbomb.com/uploads/scale_avatar/9/93770/2370498-genesis_desertstrike_2__1_.jpg"),
+                     ("2",34,"http://static.giantbomb.com/uploads/scale_avatar/0/238/707495-the_real_deal_2.jpg"),
+                     ("3",44,"http://static.giantbomb.com/uploads/scale_avatar/0/238/707495-the_real_deal_2.jpg"),
+                     ("4",555,"http://static.giantbomb.com/uploads/scale_avatar/0/238/707495-the_real_deal_2.jpg")
+                    ],
+            #'games': [33,34,44,555],
+            #'images': ["http://static.giantbomb.com/uploads/scale_avatar/9/93770/2370498-genesis_desertstrike_2__1_.jpg",
+            #           "https://scontent-b-dfw.xx.fbcdn.net/hphotos-ash3/643899_10151224644799740_33181706_n.jpg",
+            #           "https://scontent-b-dfw.xx.fbcdn.net/hphotos-ash3/643899_10151224644799740_33181706_n.jpg",
+            #           "https://scontent-b-dfw.xx.fbcdn.net/hphotos-ash3/643899_10151224644799740_33181706_n.jpg"],
+            
+            'simimages':["11","12","22","333"]
+            #'gamesid':["1","2","3","4","5"]
+            #'times':[]
+            }
+        template = JINJA_ENVIRONMENT.get_template('results.html')
+        self.response.write(template.render(results))
+    	#self.response.out.write(template.render('results.html',{}))
+    	#self.response.out.write(template.render('results.html',{'Test.xml'}))
 
-        #template_values = {
-            #'greetings': greetings,
-            #'guestbook_name': urllib.quote_plus(guestbook_name),
-            #'url': url,
-            #'url_linktext': url_linktext,
-        #}
-
-        #template = JINJA_ENVIRONMENT.get_template('results.html')
-        #self.response.write(template.render(template_values))		
-	def get(self):
-		self.response.write(template.render('main.html',{}))
-	
-	def post(self):
-		username = self.request.get('user_name')
-    	#self.response.out.write('Hollow ' + username)
-		results = {
-			'username': username,
-			'id': 333444555,
-			'desc': 'hello there my name is shane'
-			}
-		
-		
-		
-		template = JINJA_ENVIRONMENT.get_template('results.html')
-		self.response.write(template.render(results))
-		#self.response.write(json.dumps(results))
-    	#self.response.out.write(template.render('Test.xml',{}))
-    	#self.response.out.write(template.render('results.html','Test.xml'))
+    
 
 
 
@@ -80,5 +68,5 @@ class MainPage(webapp2.RequestHandler):
 
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage)
+    ('/', MainHandler)
 ], debug=True)

@@ -1,0 +1,54 @@
+FILE:	giantbombRequest.py
+----------------------------------------------------------------------------------------------------
+This is the code that was used to pull data for our database of games,
+ a similar one was built for a different database API
+This will generate an XML file for each game and store it in the "games" directory
+
+To run:
+	python giantbombRequest.py
+
+INSIDE def giantBombTest():
+	the first for loop is used to grab list of games and ids
+	a nested loop runs inside that to grab details about specific games
+
+	for i in range() <--  this ran in intervals because of the large amount of games
+------------------------------------------------------------------------------------------------------
+
+FILE:	processTFIDF.py
+--------------------------------------------------------------------------------------------------------
+This script takes in all of the XML game files and processes their descriptions for comparison.
+It creates an invertedIndex.txt file containing ~246000 terms and their associated gameID occurences.
+Because of the large amount of games and terms dealt with, File I/O was necessary because of RAM issues.
+
+To run:
+	python processTFIDF.py
+
+The program will populate the "scores" folder with a text file for each game ID containing their TFIDF scores.
+In order to save space, it only stores score values that were greater than 0.
+Format is as follows:
+	<index of term> <score>, <index of term> <score>
+	
+This way it can be easily broken up with the string split() function.
+	-> That way calculating CosineSimularity with another document will be easy by just comparing index values.
+-----------------------------------------------------------------------------------------------------------
+
+FILE:	steamUserInfo.py
+------------------------------------------------------------------------------------------------------------
+This script will be utilized to grab the Steam user's game information.
+Requirements:
+	User must know their public SteamID OR their 64bit SteamID number to enter into the program
+	Example:
+		Travis Poppenhusen's pubic ID is 'qantravon', so he can enter in that.
+		Shane Cottey's steam ID is not public, so he must enter in the number. '76561197979836184'
+		
+To run:
+	python steamUserInfo.py
+		
+The script will collect every game under the user's account.
+Information including:
+	Name, ID, 2weeks playtime, forever playtime
+	
+The script will exclude games that have 0 for both 2weeks and forever playtimes.
+It will also search through the existing game database we built to find game matches for names, and exclude those that don't exist.
+From there, we can sort by playtime, and return information.
+---------------------------------------------------------------------------------------------------------------
