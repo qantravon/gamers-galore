@@ -1,103 +1,60 @@
-<!DOCTYPE html>
 <html>
-	<head>
-		<title>User ID</title>
-	</head>
-	<body>
-		<p> {{username}} 
-		{% for num in id %}
-			{{num}}
-		{% endfor %}
-		</p>
-	</body>
-</html>
 
-<!--
-{% autoescape true %}
-<html>
-  <body>
-    {% for greeting in greetings %}
-      {% if greeting.author %}
-        <b>{{ greeting.author.nickname() }}</b> wrote:
-      {% else %}
-       An anonymous person wrote:
-      {% endif %}
-      <blockquote>{{ greeting.content }}</blockquote>
-    {% endfor %}
+<style type="text/css">
+body,td,th {
+	color: #000; 
+}
+table{
+}
+body {
+	background-color: #CCCCCC;
+	
+}
+a:link {
+	color: #D6D6D6;
+}
+</style>
 
-    <form action="/sign?guestbook_name={{ guestbook_name }}" method="post">
-      <div><textarea name="content" rows="3" cols="60"></textarea></div>
-      <div><input type="submit" value="Sign Guestbook"></div>
-    </form>
+<h1 align="center" >Steam User Info</h1>
 
-    <hr>
-
-    <form>Guestbook name:
-      <input value="{{ guestbook_name }}" name="guestbook_name">
-      <input type="submit" value="switch">
-    </form>
-
-    <a href="{{ url|safe }}">{{ url_linktext }}</a>
-
-  </body>
-</html>
-{% endautoescape %}
--->
-
-<!--		
-<h1 align="center" >Page2</h1>
-<form action="" method="post"
-accept-charset=:"utf-8" >
+<body bgcolor="#0033FF" text="#666666" link="#666666" vlink="#666666" alink="#666666" >
+Hello {{username}}
 
 <script>
-	window.onload=function readxml() {
-	var xmlhttp;
-		if (window.XMLHttpRequest)
+	var pressed = new Array(5);
+	pressed[0] = false;
+	pressed[1] = false;
+	pressed[2] = false;
+	pressed[3] = false;
+	pressed[4] = false;
+
+	function gameid(gid)
+	{
+		if( !pressed[gid] )
 		{
-		   xmlhttp = new XMLHttpRequest();
-		   document.write("test0");
-	   }
-	   else {// code for IE6, IE5
-		   xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-		   document.write("test1");
-	   }
-	   document.write("test2");
-	 	
-	   xmlhttp.open("GET","Test.xml", false); 
-	   xmlhttp.send();
-	   
-	   var xmlDoc = xmlhttp.responseXML;
-	   document.write(xmlDoc);
-	   x=xmlDoc.getElementsByTagName("GAME");
-	   document.write(x.length);
-		document.write("test4");
-	   for (i = 0; i < x.length; i++) 
-	   {
-		   
-		  var name = x[i].getElementsByTagName("NAME")[0].childNodes[0].nodeValue;
-		  document.write(name);
-		  //var game = x[i].getElementsByTagName("GAME")[0].childNodes[0].nodeValue;
-		  var time = x[i].getElementsByTagName("TIME")[0].childNodes[0].nodeValue;
-		  document.write(time);
-		  var image = x[i].getElementsByTagName("IMAGE")[0].childNodes[0].nodeValue;
-		
-       }       
-	   //document.write(name);
-	}
-</script>
-<script>
-	/*	
-		window.onload=function add_new_data() {
- 		//先取得目前的row數
-		readxml();
-		x = [1,2,3];
-		y = [150,30,60];
-		k = 2;
-			 for (i=k; i>=0; i--){
-			 	var num = document.getElementById("mytable").rows.length;
-			 //建立新的tr 因為是從0開始算 所以目前的row數剛好為目前要增加的第幾個tr
-			 	var Tr = document.getElementById("mytable").insertRow(num);
-			 //建立新的td 而Tr.cells.length就是這個tr目前的td數
+			var z = gid;
+			x = ["a","b","c","d"];
+			add = true;
+			y = [150,30,60,50];
+			k=3;
+			firstime = true;
+			
+			//Td = Tr.insertCell(Tr.cells.length);
+			//Td.innerHTML="Similar Games";
+			//Td = Tr.insertCell(Tr.cells.length);
+			//Td.innerHTML="Description";
+			for (i=x.length; i>=0; i--){
+				var num = document.getElementById(gid).rows.length;
+				var Tr = document.getElementById(gid).insertRow(num);
+			 //建立新的tr 因為是從0開始算 所以目前的row數剛好為目前要增加的第幾個tr			
+			 	if (firstime==true){
+					firstime = false;
+					Td = Tr.insertCell(Tr.cells.length);
+					Td.innerHTML="Similar Games";
+					Td = Tr.insertCell(Tr.cells.length);
+					Td.innerHTML="Description";
+				}
+				else{
 			 	Td = Tr.insertCell(Tr.cells.length);
 			 //而這個就是要填入td中的innerHTML
 			 	Td.innerHTML=x[i];
@@ -105,23 +62,69 @@ accept-charset=:"utf-8" >
 			 	Td = Tr.insertCell(Tr.cells.length);
 			 	Td.innerHTML=y[i]+" min";
 			 //這樣就好囉 記得td數目要一樣 不然會亂掉~
+				}
 			}
+			pressed[gid] = true;
 		}
-		*/
+	}
+
+	function deletid(gid)
+	{
+		if( pressed[gid] )
+		{
+			for (i=k+1; i>=0; i--){
+			var num = document.getElementById(gid).rows.length;
+	 		 //刪除最後一個
+			 if (num>=2)
+  				document.getElementById(gid).deleteRow(-1);
+			}
+			pressed[gid] = false;
+		}
+	}
 </script>
-
-
-<body>
-	<table id="mytable" width="580">
+	
+    <table width="580" border="1" align="center" id="mytable">
       <tr>
-        <td width="150" class="td01">Games</td>
-        <td width="200" class="td01">Play Time</td>
-        <td width="250" class="td01"><input type="button" value="find commen games"></input></td>
+        <td width="200" bgcolor="#FFFFFF" class="td01">Games</td>
+        <td width="200" bgcolor="#FFFFFF" class="td01">Play Time</td>
+        <td width="200" bgcolor="#FFFFFF" class="td01">&nbsp;</td>
       </tr>
+      {% for num in gamezz %}
+      <tr>
       
+     	<td width="200" height="164" align="center" valign="middle" bgcolor="#FFFFFF" class="td01">
+			
+				<p><image src="{{num[4].decode('utf-8')}}" title="{{num[4].decode('utf-8')}}" height="95%" width="95%"></image></p></td>
+        <td width="200" align="center" valign="middle" bgcolor="#FFFFFF" class="td01"> 
+	
+		  	<p>{{num[1].decode('utf-8')}}</p>
+		
+        </td>
+        <td colspan="2" align="center" valign="middle" bgcolor="#FFFFFF" class="td01">	
+          
+          <p>
+            <input type="button" value="Show Results" id="Show Results" onclick=gameid({{num[0]}})>
+            <input type="button" value="Hide Results" id="Hide Results" onclick=deletid({{num[0]}})></input>
+        </p>        </td>
+      </tr>
+      <tr>
+        <td height="30" colspan="4" align="right" bgcolor="#FFFFFF" class="td01">
+        
+        	<table id='{{num[0]}}' border="1" >
+  				<tr align="center">
+  <!--
+    <td width="181" class="td011" >Similar Games</td>
+    <td width="184" class="td011">Description</td>
+    -->
+    			</tr>
+        	</table>
+         </td>
+      </tr>
+       {% endfor %} 
     </table>
     
+  
 </body>
-</form>
+	
+
 </html>
-//-->
